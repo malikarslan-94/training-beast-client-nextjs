@@ -30,39 +30,6 @@ export default function SignIn() {
     const authContext = useContext(AuthContext);
 
 
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            display: "flex", flexDirection: "row", justifyContent: "space-between",
-            height: '100vh', backgroundColor: "white"
-        },
-        // image: {
-        //   backgroundImage: 'url(https://source.unsplash.com/random)',
-        //   backgroundRepeat: 'no-repeat',
-        //   backgroundColor:
-        //   theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-        //   backgroundSize: 'cover',
-        //   backgroundPosition: 'center',
-        // },
-        paper: {
-            margin: theme.spacing(8, 4),
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-        },
-        avatar: {
-            margin: theme.spacing(1),
-            backgroundColor: theme.palette.secondary.main,
-        },
-        form: {
-            backgroundColor: "green",
-            padding: 5,
-            width: '90%', // Fix IE 11 issue.
-            marginTop: theme.spacing(1),
-        },
-        submit: {
-            margin: theme.spacing(3, 0, 2),
-        },
-    }));
 
     const submitForm = async (values: any, { setSubmitting }: any) => {
         layoutContext.setLinearProgress(true);
@@ -84,17 +51,12 @@ export default function SignIn() {
     return (
 
         <Grid container component="main" className={classes.root}>
-            {/* <CssBaseline /> */}
-            <Grid item xs={false} sm={4} md={6} style={{
-                backgroundImage: 'url(https://source.unsplash.com/random)',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: "white",
-                //   backgroundColor:
-                //   theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-            }}
-            />
+            <Grid item xs={false} sm={4} md={6}
+            >
+                <img
+                    className={classes.image}
+                    src="./undrawBackground.png"></img>
+            </Grid>
             <Grid item xs={false} sm={1} md={1} style={{ backgroundColor: "white" }}></Grid>
             <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
                 <div className={classes.paper}>
@@ -104,8 +66,11 @@ export default function SignIn() {
                     <Typography component="h1" variant="h5">
                         Sign in
           </Typography>
-                    <form className={classes.form} noValidate >
-                        <div style={{ backgroundColor: "green", display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                    <form className={classes.form} noValidate
+                    // onSubmit={submitForm}
+
+                    >
+                        <div className={classes.formDiv}>
                             <TextField
                                 style={{ width: "90%" }}
                                 variant="outlined"
@@ -131,27 +96,32 @@ export default function SignIn() {
                                 autoComplete="current-password"
                             />
                         </div>
-                        <FormControlLabel
+                        <div className={classes.padding}><FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Sign In
+                        /></div>
+
+                        <div className={classes.padding}>
+                            <Button
+                                style={{ backgroundColor: "#abdaa1", color: "white" }}
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                // color="primary"
+                                className={classes.submit}
+                            >
+                                Sign In
             </Button>
-                        <Grid container>
+                        </div>
+
+                        <Grid container className={classes.padding}>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
                                     Forgot password?
                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/sign-up" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
@@ -164,52 +134,3 @@ export default function SignIn() {
         </Grid>
     );
 }
-
-
-//     );
-// }
-
-
-
-
-
-
-
-
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-
-
-// export default function SignInSide() {
-//   const classes = useStyles();
-
-//   return (
-
-
-
-// <div>
-//             <Container component="section" maxWidth="xs">
-//                 <Box border={1}>
-//                     <div className={classes.paper}>
-//                         <img alt="dragon" src={'https://files.trainingbeast.co/file/tbc-files/logo/head_no_glow.png'}  className={classes.logo} width={"200px"}
-//                             height={"210px"} />
-//                         <Typography component="h2" variant="h2" style={{ float: 'left' }}>
-//                             Sign In
-//                         </Typography>
-//                         <SignInForm submitForm={submitForm} />
-//                     </div>
-//                 </Box>
-//             </Container>
-//         </div>
