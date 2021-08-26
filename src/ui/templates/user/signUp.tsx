@@ -81,6 +81,18 @@ export default function SignUp() {
                                     id="password"
                                     autoComplete="current-password"
                                 />
+                                <TextField
+                                    style={{ width: "90%" }}
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    // fullWidth
+                                    name="password"
+                                    label="Confirm Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                />
                             </div>
                             <div className={classes.padding}><FormControlLabel
                                 control={<Checkbox value="remember" color="primary" />}
